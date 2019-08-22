@@ -11,8 +11,20 @@ class SensorsController < ApplicationController
   end
 
 	def index
-		@male = Sensor.male_toilet.closed ? 'zajęta' : 'otwarta'
-		@female = Sensor.female_toilet.closed ? 'zajęta' : 'otwarta'
+		if Sensor.male_toilet.closed
+			@male = 'zajęta'
+			@male_style = 'red'
+		else
+			@male = 'otwarta'
+			@male_style = 'green'
+		end
+		if Sensor.female_toilet.closed
+			@female = 'zajęta'
+			@female_style = 'red'
+		else
+			@female = 'otwarta'
+			@female_style = 'green'
+		end
 	end
 
 end
