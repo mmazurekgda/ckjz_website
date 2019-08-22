@@ -27,5 +27,11 @@ class SensorsController < ApplicationController
 		end
 	end
 
+	def top_bar_status
+		render json: Sensor.all.pluck(:name, :closed).to_h.to_json,
+					 status: :ok
+	end
+
+
 end
 
